@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Life - Pure Happiness 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@200;300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff0f6 0%, #ffe6f0 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            color: #d65b9c;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(214, 91, 156, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .back-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(214, 91, 156, 0.4); }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #d65b9c;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(214, 91, 156, 0.2);
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        .message-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(214, 91, 156, 0.15);
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        .message-card:nth-child(1) { animation-delay: 0.2s; }
+        .emoji-header { font-size: 3em; text-align: center; margin-bottom: 20px; }
+        .message-card h2 {
+            color: #d65b9c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .message-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        
+        /* Polaroid Love Wall */
+        .polaroid-wall-section {
+            padding: 48px 16px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,240,246,0.9));
+            border-radius: 30px;
+            margin-top: 40px;
+        }
+        .polaroid-wall {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(150px, 1fr));
+            gap: 22px;
+            max-width: 800px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+        @media (min-width: 640px) {
+            .polaroid-wall { grid-template-columns: repeat(3, 190px); }
+        }
+        @media (min-width: 1024px) {
+            .polaroid-wall { grid-template-columns: repeat(5, 190px); }
+        }
+        .polaroid-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 14px;
+            padding: 14px 14px 28px 14px;
+            width: 190px;
+            height: 230px;
+            box-shadow: 0 14px 32px rgba(0,0,0,0.14), 0 1px 0 rgba(255,255,255,0.6);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            animation: slideInUp 0.6s ease-out backwards;
+        }
+        .polaroid-card:nth-child(1) { animation-delay: 0.05s; }
+        .polaroid-card:nth-child(2) { animation-delay: 0.1s; }
+        .polaroid-card:nth-child(3) { animation-delay: 0.15s; }
+        .polaroid-card:nth-child(4) { animation-delay: 0.2s; }
+        .polaroid-card:nth-child(5) { animation-delay: 0.25s; }
+        .polaroid-card:nth-child(6) { animation-delay: 0.3s; }
+        .polaroid-card:nth-child(7) { animation-delay: 0.35s; }
+        .polaroid-card:nth-child(8) { animation-delay: 0.4s; }
+        .polaroid-card:nth-child(9) { animation-delay: 0.45s; }
+        .polaroid-card:nth-child(10) { animation-delay: 0.5s; }
+        .polaroid-card:nth-child(11) { animation-delay: 0.55s; }
+        .polaroid-card:nth-child(12) { animation-delay: 0.6s; }
+        .polaroid-card:nth-child(13) { animation-delay: 0.65s; }
+        .polaroid-card:nth-child(14) { animation-delay: 0.7s; }
+        .polaroid-card:nth-child(15) { animation-delay: 0.75s; }
+        .polaroid-card:nth-child(16) { animation-delay: 0.8s; }
+        .polaroid-card:nth-child(17) { animation-delay: 0.85s; }
+        .polaroid-card:nth-child(18) { animation-delay: 0.9s; }
+        .polaroid-card:nth-child(19) { animation-delay: 0.95s; }
+        .polaroid-card:nth-child(20) { animation-delay: 1s; }
+        .polaroid-card::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0));
+            pointer-events: none;
+        }
+        .polaroid-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+        }
+        .polaroid-caption {
+            position: absolute;
+            left: 50%;
+            bottom: 6px;
+            transform: translateX(-50%);
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.2em;
+            color: #c45a8f;
+            opacity: 0.9;
+            letter-spacing: 0.6px;
+        }
+        .polaroid-card:nth-child(1) { transform: rotate(-7deg) translateX(-10px) translateY(8px); }
+        .polaroid-card:nth-child(2) { transform: rotate(6deg) translateX(14px) translateY(-6px); }
+        .polaroid-card:nth-child(3) { transform: rotate(-4deg) translateX(-12px) translateY(10px); }
+        .polaroid-card:nth-child(4) { transform: rotate(7deg) translateX(12px) translateY(-8px); }
+        .polaroid-card:nth-child(5) { transform: rotate(-6deg) translateX(-14px) translateY(6px); }
+        .polaroid-card:nth-child(6) { transform: rotate(5deg) translateX(10px) translateY(-10px); }
+        .polaroid-card:nth-child(7) { transform: rotate(-5deg) translateX(-8px) translateY(12px); }
+        .polaroid-card:nth-child(8) { transform: rotate(8deg) translateX(16px) translateY(-4px); }
+        .polaroid-card:nth-child(9) { transform: rotate(-3deg) translateX(-6px) translateY(8px); }
+        .polaroid-card:nth-child(10) { transform: rotate(4deg) translateX(10px) translateY(-12px); }
+        .polaroid-card:nth-child(11) { transform: rotate(-6deg) translateX(-12px) translateY(6px); }
+        .polaroid-card:nth-child(12) { transform: rotate(7deg) translateX(14px) translateY(-8px); }
+        .polaroid-card:nth-child(13) { transform: rotate(-4deg) translateX(-10px) translateY(10px); }
+        .polaroid-card:nth-child(14) { transform: rotate(5deg) translateX(12px) translateY(-6px); }
+        .polaroid-card:nth-child(15) { transform: rotate(-5deg) translateX(-14px) translateY(8px); }
+        .polaroid-card:nth-child(16) { transform: rotate(6deg) translateX(10px) translateY(-10px); }
+        .polaroid-card:nth-child(17) { transform: rotate(-3deg) translateX(-8px) translateY(12px); }
+        .polaroid-card:nth-child(18) { transform: rotate(4deg) translateX(16px) translateY(-4px); }
+        .polaroid-card:nth-child(19) { transform: rotate(-7deg) translateX(-12px) translateY(6px); }
+        .polaroid-card:nth-child(20) { transform: rotate(8deg) translateX(14px) translateY(-8px); }
+        
+        .polaroid-card:hover {
+            transform: rotate(0deg) translateY(-8px);
+            box-shadow: 0 22px 60px rgba(214,91,156,0.26), 0 1px 0 rgba(255,255,255,0.7);
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <a href="divya.html" class="back-btn">← Back</a>
+    <div class="container">
+        <h1>College Life 🌸</h1>
+        <div class="content-grid">
+            <div class="message-card">
+                <div class="emoji-header">🌸</div>
+                <h2>Pure Happiness</h2>
+                <p>College days with you are filled with laughter, adventures, and unforgettable memories. Every moment spent together is a treasure. Here's to more amazing experiences, late-night talks, and pure happiness!</p>
+            </div>
+        </div>
+        
+        <!-- Polaroid Love Wall -->
+        <section class="polaroid-wall-section">
+            <div class="polaroid-wall">
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/casual.jpg" alt="friends">
+                    <figcaption class="polaroid-caption">friends</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/fest .jpg" alt="fun">
+                    <figcaption class="polaroid-caption">fun</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/Sist 2.jpg" alt="memories">
+                    <figcaption class="polaroid-caption">memories</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/terror.jpg" alt="laughter">
+                    <figcaption class="polaroid-caption">laughter</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/nive divya.jpg" alt="together">
+                    <figcaption class="polaroid-caption">together</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/flower.jpg" alt="dreams">
+                    <figcaption class="polaroid-caption">dreams</figcaption>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html></body>    </div>        </section>            </div>                </figure>                    <figcaption class="polaroid-caption">sisterhood</figcaption>                    <img class="polaroid-photo" src="./IMAGES/Sist 1.jpg" alt="sisterhood">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">togetherness</figcaption>                    <img class="polaroid-photo" src="./IMAGES/event.jpg" alt="togetherness">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">laughter</figcaption>                    <img class="polaroid-photo" src="./IMAGES/funny smile.jpg" alt="laughter">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">cherish</figcaption>                    <img class="polaroid-photo" src="./IMAGES/home .jpg" alt="cherish">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">explore</figcaption>                    <img class="polaroid-photo" src="./IMAGES/1st std.jpg" alt="explore">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">playful</figcaption>                    <img class="polaroid-photo" src="./IMAGES/kutty divya.jpg" alt="playful">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">hope</figcaption>                    <img class="polaroid-photo" src="./IMAGES/flower.jpg" alt="hope">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">smile</figcaption>                    <img class="polaroid-photo" src="./IMAGES/nive divya.jpg" alt="smile">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">shine</figcaption>                    <img class="polaroid-photo" src="./IMAGES/terror.jpg" alt="shine">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">sparkle</figcaption>                    <img class="polaroid-photo" src="./IMAGES/Sist 2.jpg" alt="sparkle">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">vibe</figcaption>                    <img class="polaroid-photo" src="./IMAGES/fest .jpg" alt="vibe">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">unite</figcaption>                    <img class="polaroid-photo" src="./IMAGES/casual.jpg" alt="unite">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">bond</figcaption>                    <img class="polaroid-photo" src="./IMAGES/Sist 1.jpg" alt="bond">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">celebrate</figcaption>                    <img class="polaroid-photo" src="./IMAGES/event.jpg" alt="celebrate">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">joy</figcaption>                    <img class="polaroid-photo" src="./IMAGES/funny smile.jpg" alt="joy">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">moments</figcaption>                    <img class="polaroid-photo" src="./IMAGES/home .jpg" alt="moments">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">adventure</figcaption>                    <img class="polaroid-photo" src="./IMAGES/1st std.jpg" alt="adventure">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">silly</figcaption>                    <img class="polaroid-photo" src="./IMAGES/kutty divya.jpg" alt="silly">                <figure class="polaroid-card">                </figure>                    <figcaption class="polaroid-caption">shine</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/nive divya.jpg" alt="glow">
+                    <figcaption class="polaroid-caption">glow</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/flower.jpg" alt="bloom">
+                    <figcaption class="polaroid-caption">bloom</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/kutty divya.jpg" alt="cherish">
+                    <figcaption class="polaroid-caption">cherish</figcaption>
+                </figure>
+                <figure class="polaroid-card">
+                    <img class="polaroid-photo" src="./IMAGES/1st std.jpg" alt="forever">
+                    <figcaption class="polaroid-caption">forever</figcaption>
+                </figure>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
